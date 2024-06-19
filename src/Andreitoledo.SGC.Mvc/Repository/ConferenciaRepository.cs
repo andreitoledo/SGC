@@ -1,4 +1,5 @@
 ﻿using Andreitoledo.SGC.Mvc.Data;
+using Andreitoledo.SGC.Mvc.Data.Orm;
 using Andreitoledo.SGC.Mvc.Models;
 
 namespace Andreitoledo.SGC.Mvc.Repository
@@ -6,36 +7,57 @@ namespace Andreitoledo.SGC.Mvc.Repository
     public class ConferenciaRepository : IConferenciaRepository
 
     {
-        private readonly ApplicationDbContext _context;
+        private readonly BancoContext _context;
 
-        public ConferenciaRepository(ApplicationDbContext applicationContext)
+        public ConferenciaRepository(BancoContext bancoContext)
         {
-            _context = applicationContext;
+            _context = bancoContext;
         }
 
         public Conferencia ListarPorId(int id)
         {
-            throw new NotImplementedException();
+            return _context.Conferencia.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Conferencia> BuscarTodos()
         {
-            throw new NotImplementedException();
+            return _context.Conferencia.ToList();
         }
 
         public Conferencia Adicionar(Conferencia conferencia)
         {
-            throw new NotImplementedException();
+            _context.Conferencia.Add(conferencia);
+            _context.SaveChanges();
+
+            return conferencia;
         }
 
         public Conferencia Atualizar(Conferencia conferencia)
         {
-            throw new NotImplementedException();
+            Conferencia conferenciaDB = ListarPorId(conferencia.Id);
+
+            if (conferenciaDB == null) throw new System.Exception("Houve um erro na atualização da conferência!");
+
+            conferenciaDB.Trilha = conferencia.Trilha;
+            conferenciaDB.Nome = conferencia.Nome;            
+            conferenciaDB.Tempo = conferencia.Tempo;
+
+            _context.Conferencia.Update(conferenciaDB);
+            _context.SaveChanges();
+
+            return conferenciaDB;
         } 
 
         public bool Excluir(int id)
         {
-            throw new NotImplementedException();
+            Conferencia conferenciaDB = ListarPorId(id);
+
+            if (conferenciaDB == null) throw new System.Exception("Houve um erro na exclusão da conferência!");
+
+            _context.Conferencia.Remove(conferenciaDB);
+            _context.SaveChanges();
+
+            return true;
         }
 
  
