@@ -1,4 +1,5 @@
 ﻿using Andreitoledo.SGC.Mvc.Models;
+using Andreitoledo.SGC.Mvc.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,7 +14,6 @@ namespace Andreitoledo.SGC.Mvc.Controllers
         {
             _logger = logger;
         }
-
         
         public IActionResult Index()
         {

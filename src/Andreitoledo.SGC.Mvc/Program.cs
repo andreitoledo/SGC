@@ -1,4 +1,5 @@
 using Andreitoledo.SGC.Mvc.Data;
+using Andreitoledo.SGC.Mvc.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,9 @@ namespace Andreitoledo.SGC.Mvc
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+            // configura a injeção de dependencia da interface IConferenciaRepository
+            builder.Services.AddScoped<IConferenciaRepository, ConferenciaRepository>();
 
             var app = builder.Build();
 
