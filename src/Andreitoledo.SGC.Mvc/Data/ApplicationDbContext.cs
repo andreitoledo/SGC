@@ -9,6 +9,8 @@ namespace Andreitoledo.SGC.Mvc.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-        }        
+        }
+
+        public DbSet<Conferencia> Conferencia { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Andreitoledo.SGC.Mvc.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Andreitoledo.SGC.Mvc.Data.Orm
+namespace Andreitoledo.SGC.Mvc.Data
 {
     public class BancoContext : DbContext
     {

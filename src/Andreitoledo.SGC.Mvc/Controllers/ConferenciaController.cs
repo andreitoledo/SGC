@@ -28,6 +28,7 @@ namespace Andreitoledo.SGC.Mvc.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Incluir(Conferencia conferencia)
         {
             try

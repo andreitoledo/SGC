@@ -2,6 +2,7 @@ using Andreitoledo.SGC.Mvc.Data;
 using Andreitoledo.SGC.Mvc.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Andreitoledo.SGC.Mvc
 {
@@ -21,8 +22,19 @@ namespace Andreitoledo.SGC.Mvc
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
+            //// configura a injeção de dependencia do contexto BancoContent
+            builder.Services.AddDbContext<BancoContext>(options =>
+            options.UseSqlServer(connectionString));
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+            //builder.Services.AddControllersWithViews();
+            //builder.Services.AddEntityFrameworkSqlServer()
+            //    .AddDbContext<BancoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // configura a injeção de dependencia da interface IConferenciaRepository
             builder.Services.AddScoped<IConferenciaRepository, ConferenciaRepository>();
+
+            builder.Services.AddControllers();
 
             var app = builder.Build();
 

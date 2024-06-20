@@ -1,0 +1,11 @@
+﻿@model Conferencia
+@{
+    ViewData["Title"] = "Listagem de Conferências";
+}
+
+<div class="text-center">
+    <h3>Realmente deseja apagar a conferência (@Model.Nome)?</h3>
+</div>
+
+<a class="btn btn-primary btn-block" role="button" asp-controller="Conferencia" asp-action="Index">Cancelar exclusão</a>
+<a class="btn btn-danger btn-block" asp-controller="Conferencia" asp-route-id="@Model.Id" asp-action="Excluir">Confirmar exclusão</a>

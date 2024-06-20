@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Andreitoledo.SGC.Mvc.Models
 {
-    [Table("conferencia")]
+    
     public class Conferencia : BaseEntity
     {
         [Column("trilha")]

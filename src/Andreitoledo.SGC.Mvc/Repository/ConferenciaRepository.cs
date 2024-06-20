@@ -1,5 +1,4 @@
 ﻿using Andreitoledo.SGC.Mvc.Data;
-using Andreitoledo.SGC.Mvc.Data.Orm;
 using Andreitoledo.SGC.Mvc.Models;
 
 namespace Andreitoledo.SGC.Mvc.Repository
